@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://duj8kn6olrqy8"]
+
+[ext_resource type="PackedScene" uid="uid://btnyjvslcs5fy" path="res://Character Creation/eye.glb" id="1_bkpfr"]
+[ext_resource type="Texture2D" uid="uid://er306cp60hsv" path="res://Character Creation/characters/human/textures/eye_diffuse.png" id="2_bmcvu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpgyt"]
+albedo_texture = ExtResource("2_bmcvu")
+roughness = 0.07
+refraction_enabled = true
+refraction_scale = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_er6jq"]
+resource_local_to_scene = true
+cull_mode = 1
+albedo_color = Color(0.52549, 0.686275, 0.980392, 1)
+albedo_texture = ExtResource("2_bmcvu")
+
+[node name="eye" instance=ExtResource("1_bkpfr")]
+
+[node name="eye2" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_cpgyt")
+surface_material_override/1 = SubResource("StandardMaterial3D_er6jq")

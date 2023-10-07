@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://bdf4bqlqx5jfb"]
+
+[ext_resource type="Shader" uid="uid://drngajphu4m51" path="res://Character Creation/materials/skin_shader.tres" id="1_eoipu"]
+[ext_resource type="Texture2D" uid="uid://c2ywtaaeryrih" path="res://Character Creation/characters/human/human_female/textures/human_female_age_middle.png" id="2_fhpwq"]
+[ext_resource type="Texture2D" uid="uid://c6f287doge6u7" path="res://Character Creation/materials/skin_bump.tres" id="3_4xpam"]
+[ext_resource type="Texture2D" uid="uid://cqymq4iafp1h1" path="res://Character Creation/characters/human/human_female/textures/human_female_body_base.png" id="4_xgw71"]
+[ext_resource type="Texture2D" uid="uid://c63y4akfsouki" path="res://Character Creation/characters/human/human_female/textures/human_female_face.png" id="5_oxpoi"]
+[ext_resource type="Texture2D" uid="uid://c818i0kxvc355" path="res://Character Creation/characters/human/human_female/textures/human_female_face_map.png" id="6_j51pw"]
+[ext_resource type="Texture2D" uid="uid://d2mrtqbojoixo" path="res://Character Creation/characters/human/human_female/textures/human_female_face_roughness.png" id="7_7mqse"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_eoipu")
+shader_parameter/age_factor = 0.0
+shader_parameter/skin_color = Color(0.815686, 0.745098, 0.682353, 1)
+shader_parameter/Subsurface_Scattering = 1.015
+shader_parameter/body_diffuse = ExtResource("4_xgw71")
+shader_parameter/face_diffuse = ExtResource("5_oxpoi")
+shader_parameter/face_map = ExtResource("6_j51pw")
+shader_parameter/body_age = ExtResource("2_fhpwq")
+shader_parameter/face_roughness = ExtResource("7_7mqse")
+shader_parameter/body_bump = ExtResource("3_4xpam")

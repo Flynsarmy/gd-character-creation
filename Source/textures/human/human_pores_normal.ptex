@@ -1,0 +1,371 @@
+{
+	"connections": [
+		{
+			"from": "normal_map2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		},
+		{
+			"from": "image",
+			"from_port": 0,
+			"to": "normal_map2_2",
+			"to_port": 0
+		},
+		{
+			"from": "perlin_color",
+			"from_port": 0,
+			"to": "colorize_2",
+			"to_port": 0
+		},
+		{
+			"from": "colorize_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "fbm2_2",
+			"from_port": 0,
+			"to": "colorize_3",
+			"to_port": 0
+		},
+		{
+			"from": "fbm2",
+			"from_port": 0,
+			"to": "colorize_4",
+			"to_port": 0
+		},
+		{
+			"from": "colorize_4",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 0
+		},
+		{
+			"from": "colorize_3",
+			"from_port": 0,
+			"to": "blend2",
+			"to_port": 1
+		},
+		{
+			"from": "blend2",
+			"from_port": 0,
+			"to": "normal_map2",
+			"to_port": 0
+		},
+		{
+			"from": "normal_map2",
+			"from_port": 0,
+			"to": "normal_map_convert_2",
+			"to_port": 0
+		},
+		{
+			"from": "normal_map_convert_2",
+			"from_port": 0,
+			"to": "export",
+			"to_port": 0
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@284",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_last_target": "Blender",
+			"export_paths": {
+				"Blender": "C:/Users/pette/Documents/game_dev/3d_character_creation/textures/human/human_pores_normal"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 192,
+				"y": 72
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 0.72,
+				"size": 11,
+				"sss": 1
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "image",
+			"node_position": {
+				"x": -849.160156,
+				"y": -137.039978
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "%PROJECT_PATH%/human_female_body_young_lightskinned_diffuse.png"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"name": "normal_map2",
+			"node_position": {
+				"x": -350.145447,
+				"y": 317.251526
+			},
+			"parameters": {
+				"buffer": 1,
+				"param2": 0,
+				"size": 11,
+				"strength": 0.05
+			},
+			"seed_int": 0,
+			"type": "normal_map2"
+		},
+		{
+			"name": "fbm2",
+			"node_position": {
+				"x": -1231.128052,
+				"y": 262.226288
+			},
+			"parameters": {
+				"folds": 0,
+				"iterations": 1,
+				"noise": 3,
+				"offset": 0,
+				"persistence": 0.44,
+				"scale_x": 150,
+				"scale_y": 150
+			},
+			"seed_int": 0,
+			"type": "fbm2"
+		},
+		{
+			"name": "export",
+			"node_position": {
+				"x": 21.875845,
+				"y": 468.691925
+			},
+			"parameters": {
+				"size": 11,
+				"suffix": "normal"
+			},
+			"seed_int": 0,
+			"type": "export"
+		},
+		{
+			"name": "normal_map2_2",
+			"node_position": {
+				"x": -593.437683,
+				"y": -126.406876
+			},
+			"parameters": {
+				"buffer": 1,
+				"param2": 2,
+				"size": 12,
+				"strength": 0.04
+			},
+			"seed_int": 0,
+			"type": "normal_map2"
+		},
+		{
+			"name": "perlin_color",
+			"node_position": {
+				"x": -340.402649,
+				"y": 68.881119
+			},
+			"parameters": {
+				"iterations": 3,
+				"persistence": 0.5,
+				"scale_x": 1,
+				"scale_y": 1
+			},
+			"seed_int": 0,
+			"type": "perlin_color"
+		},
+		{
+			"name": "colorize_2",
+			"node_position": {
+				"x": -47.402649,
+				"y": 64.881119
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0.488846,
+							"g": 0.601348,
+							"pos": 0,
+							"r": 0.707031
+						},
+						{
+							"a": 1,
+							"b": 0.809814,
+							"g": 0.914116,
+							"pos": 1,
+							"r": 0.96875
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"name": "fbm2_2",
+			"node_position": {
+				"x": -1224.028931,
+				"y": 520.822388
+			},
+			"parameters": {
+				"folds": 0,
+				"iterations": 1,
+				"noise": 3,
+				"offset": 0,
+				"persistence": 0.44,
+				"scale_x": 300,
+				"scale_y": 300
+			},
+			"seed_int": 0,
+			"type": "fbm2"
+		},
+		{
+			"name": "colorize_3",
+			"node_position": {
+				"x": -925.944031,
+				"y": 518.786987
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0.164062,
+							"g": 0.164062,
+							"pos": 0,
+							"r": 0.164062
+						},
+						{
+							"a": 1,
+							"b": 0.398438,
+							"g": 0.398438,
+							"pos": 0.192677,
+							"r": 0.398438
+						},
+						{
+							"a": 1,
+							"b": 0.460938,
+							"g": 0.460938,
+							"pos": 0.287373,
+							"r": 0.460938
+						},
+						{
+							"a": 1,
+							"b": 0.550781,
+							"g": 0.550781,
+							"pos": 1,
+							"r": 0.550781
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"generic_size": 1,
+			"name": "blend2",
+			"node_position": {
+				"x": -676.501282,
+				"y": 382.294708
+			},
+			"parameters": {
+				"amount1": 1,
+				"blend_type1": 3
+			},
+			"seed_int": 0,
+			"type": "blend2"
+		},
+		{
+			"name": "colorize_4",
+			"node_position": {
+				"x": -925.220276,
+				"y": 258.887268
+			},
+			"parameters": {
+				"gradient": {
+					"interpolation": 1,
+					"points": [
+						{
+							"a": 1,
+							"b": 0.164062,
+							"g": 0.164062,
+							"pos": 0,
+							"r": 0.164062
+						},
+						{
+							"a": 1,
+							"b": 0.398438,
+							"g": 0.398438,
+							"pos": 0.192677,
+							"r": 0.398438
+						},
+						{
+							"a": 1,
+							"b": 0.460938,
+							"g": 0.460938,
+							"pos": 0.287373,
+							"r": 0.460938
+						},
+						{
+							"a": 1,
+							"b": 0.550781,
+							"g": 0.550781,
+							"pos": 1,
+							"r": 0.550781
+						}
+					],
+					"type": "Gradient"
+				}
+			},
+			"seed_int": 0,
+			"type": "colorize"
+		},
+		{
+			"name": "normal_map_convert_2",
+			"node_position": {
+				"x": -203.607422,
+				"y": 585.265198
+			},
+			"parameters": {
+				"op": 0
+			},
+			"seed_int": 0,
+			"type": "normal_map_convert"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}

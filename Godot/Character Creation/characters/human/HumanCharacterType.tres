@@ -1,0 +1,439 @@
+[gd_resource type="Resource" script_class="CharacterType" load_steps=46 format=3 uid="uid://b6e7t0pcppdov"]
+
+[ext_resource type="Script" path="res://Character Creation/scripts/CharacterType.gd" id="1_humgy"]
+[ext_resource type="Script" path="res://Character Creation/scripts/BlendShapeDefinition.gd" id="1_qdoi5"]
+
+[sub_resource type="Resource" id="Resource_3505f"]
+script = ExtResource("1_qdoi5")
+blendshape = "body_fat"
+category = "Body"
+label = "Fat"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_126ke"]
+script = ExtResource("1_qdoi5")
+blendshape = "body_muscle"
+category = "Body"
+label = "Muscle"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_314x5"]
+script = ExtResource("1_qdoi5")
+blendshape = "waist_width"
+category = "Body"
+label = "Waist Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_u5xfo"]
+script = ExtResource("1_qdoi5")
+blendshape = "shoulder_width"
+category = "Body"
+label = "Shoulder Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_3ie2s"]
+script = ExtResource("1_qdoi5")
+blendshape = "hip_width"
+category = "Body"
+label = "Hip Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_f2pot"]
+script = ExtResource("1_qdoi5")
+blendshape = "breast_size"
+category = "Body"
+label = "Breast Size"
+minimum = -1.0
+default = 0.0
+maximum = 10.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_leris"]
+script = ExtResource("1_qdoi5")
+blendshape = "head_width"
+category = "Head"
+label = "Head Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_fbf0f"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_width"
+category = "Face"
+label = "Nose Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_m02o4"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_depth"
+category = "Face"
+label = "Nose depth"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_vskph"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_y"
+category = "Face"
+label = "Nose Height"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_jie3t"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_bridge_width"
+category = "Face"
+label = "Nose Bridge Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_wrxno"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_bridge_depth"
+category = "Face"
+label = "Nose Bridge Depth"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_cohcg"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_tip_width"
+category = "Face"
+label = "Nose Tip Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_v3650"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_tip_height"
+category = "Face"
+label = "Nose Tip Height"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_qp3yw"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_tip_depth"
+category = "Face"
+label = "Nose Tip Depth"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_pmum7"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_bridge_hump"
+category = "Face"
+label = "Nose Bridge Hump"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_a2apg"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_nostrils_x"
+category = "Face"
+label = "Nostrils Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_0j7e0"]
+script = ExtResource("1_qdoi5")
+blendshape = "nose_nostrils_y"
+category = "Face"
+label = "Nostrils Height"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_pkjj1"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_wide"
+category = "Face"
+label = "Mouth Wide"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_pvb5j"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_narrow"
+category = "Face"
+label = "Mouth Narrow"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_0g6hi"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_depth"
+category = "Face"
+label = "Mouth Depth"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_0s0ca"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_curve"
+category = "Face"
+label = "Mouth Curve"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_2dw65"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_philtrum"
+category = "Face"
+label = "Mouth Philtrum"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_0w4ui"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_lips_thicker"
+category = "Face"
+label = "Lips Thick"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_o02vw"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_lips_thinner"
+category = "Face"
+label = "Lips Thin"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_u38bl"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_lower_lip_height"
+category = "Face"
+label = "Lower Lip Height"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_73c6k"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_upper_lip_height"
+category = "Face"
+label = "Upper Lip Height"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_aqlvi"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_upper_lip_middle_shape"
+category = "Face"
+label = "Upper Lip Middle Shape"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_d3xo1"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_upper_lip_rounded"
+category = "Face"
+label = "Upper Lip Round"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_4oslr"]
+script = ExtResource("1_qdoi5")
+blendshape = "mouth_lower_lip_rounded"
+category = "Face"
+label = "Lower Lip Rounded"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_ipj62"]
+script = ExtResource("1_qdoi5")
+blendshape = "jaw_width"
+category = "Face"
+label = "Jaw Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_htflw"]
+script = ExtResource("1_qdoi5")
+blendshape = "jaw_height"
+category = "Face"
+label = "Jaw Height"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_2slmd"]
+script = ExtResource("1_qdoi5")
+blendshape = "jaw_depth"
+category = "Face"
+label = "Jaw Depth"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_x54lo"]
+script = ExtResource("1_qdoi5")
+blendshape = "chin_height"
+category = "Face"
+label = "Chin Height"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_rbh0g"]
+script = ExtResource("1_qdoi5")
+blendshape = "cheekbones_prominence"
+category = "Face"
+label = "Cheekbones Prominence"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_kruje"]
+script = ExtResource("1_qdoi5")
+blendshape = "neck_thickness"
+category = "Head"
+label = "Neck Thickness"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_l2eb1"]
+script = ExtResource("1_qdoi5")
+blendshape = "eye_height"
+category = "Face"
+label = "Eye Height"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_x4cj5"]
+script = ExtResource("1_qdoi5")
+blendshape = "eye_width"
+category = "Face"
+label = "Eye Width"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_ahrrk"]
+script = ExtResource("1_qdoi5")
+blendshape = "eye_separation"
+category = "Face"
+label = "Eye Separation"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_ok7j4"]
+script = ExtResource("1_qdoi5")
+blendshape = "eye_scale"
+category = "Face"
+label = "Eye Scale"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_h5rig"]
+script = ExtResource("1_qdoi5")
+blendshape = "eyebrow_curve"
+category = "Face"
+label = "Eyebrow Cuve"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_00dw4"]
+script = ExtResource("1_qdoi5")
+blendshape = "eyebrow_height"
+category = "Face"
+label = "Eyebrow Height"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[sub_resource type="Resource" id="Resource_4gf06"]
+script = ExtResource("1_qdoi5")
+blendshape = "cheek_fullness"
+category = "Face"
+label = "Cheek Fullness"
+minimum = -1.0
+default = 0.0
+maximum = 1.0
+propogates = true
+
+[resource]
+script = ExtResource("1_humgy")
+label = "Human"
+blendshapes = Array[ExtResource("1_qdoi5")]([SubResource("Resource_3505f"), SubResource("Resource_126ke"), SubResource("Resource_314x5"), SubResource("Resource_u5xfo"), SubResource("Resource_3ie2s"), SubResource("Resource_f2pot"), SubResource("Resource_leris"), SubResource("Resource_fbf0f"), SubResource("Resource_m02o4"), SubResource("Resource_vskph"), SubResource("Resource_jie3t"), SubResource("Resource_wrxno"), SubResource("Resource_cohcg"), SubResource("Resource_v3650"), SubResource("Resource_qp3yw"), SubResource("Resource_pmum7"), SubResource("Resource_a2apg"), SubResource("Resource_0j7e0"), SubResource("Resource_pkjj1"), SubResource("Resource_pvb5j"), SubResource("Resource_0g6hi"), SubResource("Resource_0s0ca"), SubResource("Resource_2dw65"), SubResource("Resource_0w4ui"), SubResource("Resource_o02vw"), SubResource("Resource_u38bl"), SubResource("Resource_73c6k"), SubResource("Resource_aqlvi"), SubResource("Resource_d3xo1"), SubResource("Resource_4oslr"), SubResource("Resource_ipj62"), SubResource("Resource_htflw"), SubResource("Resource_2slmd"), SubResource("Resource_x54lo"), SubResource("Resource_rbh0g"), SubResource("Resource_kruje"), SubResource("Resource_l2eb1"), SubResource("Resource_x4cj5"), SubResource("Resource_ahrrk"), SubResource("Resource_ok7j4"), SubResource("Resource_h5rig"), SubResource("Resource_00dw4"), SubResource("Resource_4gf06")])

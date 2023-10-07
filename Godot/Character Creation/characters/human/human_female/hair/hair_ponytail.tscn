@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnc3dcla2d56y"]
+
+[ext_resource type="PackedScene" uid="uid://baj2asqfw18mi" path="res://Character Creation/characters/human/human_female/hair/hair_ponytail.glb" id="1_gaunn"]
+[ext_resource type="Texture2D" uid="uid://dgak283ytf0nx" path="res://Character Creation/characters/human/human_female/hair/hair_ponytail01_diffuse.png" id="2_jeb1i"]
+[ext_resource type="Script" path="res://Character Creation/characters/human/human_female/hair/hair_ponytail.gd" id="2_pyeib"]
+
+[sub_resource type="GDScript" id="GDScript_r5qks"]
+script/source = "extends Skeleton3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	physical_bones_start_simulation()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e25u0"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+depth_draw_mode = 1
+albedo_texture = ExtResource("2_jeb1i")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r6ci7"]
+radius = 0.0189955
+height = 0.0396188
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_csrv2"]
+radius = 0.0264668
+height = 0.0549506
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hb7l5"]
+radius = 0.0163757
+height = 0.0554693
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7rc4g"]
+radius = 0.0217556
+height = 0.0717179
+
+[node name="hair_ponytail" instance=ExtResource("1_gaunn")]
+script = ExtResource("2_pyeib")
+
+[node name="Skeleton3D" parent="hair_ponytail_physics" index="0"]
+bones/0/rotation = Quaternion(-0.692938, 5.03257e-08, 1.08066e-07, 0.720997)
+bones/0/scale = Vector3(1, 1, 1)
+script = SubResource("GDScript_r5qks")
+
+[node name="ponytail" parent="hair_ponytail_physics/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_e25u0")
+
+[node name="Physical Bone Bone" type="PhysicalBone3D" parent="hair_ponytail_physics/Skeleton3D" index="1"]
+transform = Transform3D(1, -7.71967e-08, 2.25575e-07, 8.6086e-08, 0.999205, -0.0396722, -2.22336e-07, 0.0396719, 0.999209, -6.21556e-09, 0.0761036, -0.127832)
+joint_type = 2
+joint_offset = Transform3D(1, 3.55271e-15, 0, -3.55271e-15, 1, 0, 0, 0, 1, 1.5347e-14, 5.22144e-08, 0.0275543)
+joint_rotation = Vector3(0, 0, -3.55271e-15)
+body_offset = Transform3D(1, -6.83897e-13, 6.6791e-13, 5.25802e-13, 4.47035e-07, -0.999996, 1.1342e-12, 0.999992, 2.68221e-07, -3.37508e-14, 0.0275542, -5.96046e-08)
+mass = 0.01
+friction = 0.4
+linear_damp = 5.263
+angular_damp = 5.0
+bone_name = "Bone"
+joint_constraints/swing_span = 0.0
+joint_constraints/twist_span = 180.0
+joint_constraints/bias = 0.91
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hair_ponytail_physics/Skeleton3D/Physical Bone Bone" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_r6ci7")
+
+[node name="Physical Bone Bone_001" type="PhysicalBone3D" parent="hair_ponytail_physics/Skeleton3D" index="2"]
+transform = Transform3D(1, -1.44455e-07, 3.76885e-07, 7.97128e-08, 0.972505, 0.232961, -2.87334e-07, -0.232965, 0.972492, -1.49012e-08, 0.0703256, -0.184046)
+joint_type = 1
+joint_offset = Transform3D(1, -7.10543e-15, 0, 7.10543e-15, 1, 0, 0, 0, 1, -8.64523e-09, 5.00518e-07, 0.0294928)
+joint_rotation = Vector3(0, 0, 7.10543e-15)
+body_offset = Transform3D(1, 4.80327e-12, 1.16023e-07, -1.47793e-12, -2.68221e-07, -1.00001, -2.77112e-13, 1.00002, -2.98023e-07, 5.22339e-09, 0.0294929, -4.91738e-07)
+mass = 0.01
+friction = 0.4
+linear_damp = 5.263
+angular_damp = 5.0
+bone_name = "Bone.001"
+joint_constraints/bias = 0.7
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hair_ponytail_physics/Skeleton3D/Physical Bone Bone_001" index="0"]
+transform = Transform3D(1, 5.99698e-12, -7.10543e-15, 7.10543e-15, -2.98023e-08, 1, 0, -1, 0, -3.73035e-13, 0, -0.000192896)
+shape = SubResource("CapsuleShape3D_csrv2")
+
+[node name="Physical Bone Bone_002" type="PhysicalBone3D" parent="hair_ponytail_physics/Skeleton3D" index="3"]
+transform = Transform3D(1, -1.94692e-07, 3.31809e-07, 6.53106e-08, 0.91208, 0.410027, -3.29552e-07, -0.410029, 0.912072, -3.28866e-08, 0.0558652, -0.229611)
+joint_type = 1
+joint_offset = Transform3D(1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0, 1, -1.07367e-09, 1.46252e-07, 0.0185109)
+joint_rotation = Vector3(0, 0, -1.42109e-14)
+body_offset = Transform3D(1, 1.25056e-12, 5.80119e-08, -4.83169e-13, -1.16229e-06, -0.999999, 1.40687e-12, 1.00001, 1.49012e-07, -1.77636e-13, 0.0185108, -1.49012e-07)
+mass = 0.01
+friction = 0.4
+linear_damp = 5.263
+angular_damp = 5.0
+bone_name = "Bone.002"
+joint_constraints/bias = 0.7
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hair_ponytail_physics/Skeleton3D/Physical Bone Bone_002" index="0"]
+transform = Transform3D(-4.37113e-08, 0.995701, 0.0926231, -0.0926227, -0.092225, 0.991421, 0.995701, -0.00857896, 0.0922245, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_hb7l5")
+
+[node name="Physical Bone Bone_003" type="PhysicalBone3D" parent="hair_ponytail_physics/Skeleton3D" index="4"]
+transform = Transform3D(1, -1.03225e-07, 3.14137e-07, 8.2039e-08, 0.98241, 0.186728, -2.76305e-07, -0.186728, 0.982413, -4.49411e-08, 0.0431818, -0.273292)
+joint_type = 1
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5824e-09, 2.34086e-07, 0.0272776)
+body_offset = Transform3D(1, 2.90052e-08, 5.80096e-08, -8.2423e-13, 1.49012e-08, -1, -4.10125e-11, 0.999998, -3.8743e-07, 3.19744e-14, 0.0272776, -2.23517e-07)
+mass = 0.01
+friction = 0.4
+linear_damp = 5.263
+angular_damp = 5.0
+bone_name = "Bone.003"
+joint_constraints/bias = 0.7
+joint_constraints/damping = 1.0
+joint_constraints/impulse_clamp = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hair_ponytail_physics/Skeleton3D/Physical Bone Bone_003" index="0"]
+transform = Transform3D(1, 3.09797e-12, -1.58096e-12, 1.41043e-12, -8.9407e-08, 1, -5.68434e-14, -1, 0, 5.32907e-14, 0, -0.0151587)
+shape = SubResource("CapsuleShape3D_7rc4g")
+
+[node name="Camera3D" type="Camera3D" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.01857, 0.0296997, -0.021454)
+visible = false

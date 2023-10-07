@@ -1,0 +1,256 @@
+[gd_scene load_steps=12 format=3 uid="uid://doex6dxwxubhc"]
+
+[ext_resource type="PackedScene" uid="uid://b7msu76amvh35" path="res://Character Creation/characters/human/human_female/human_female.tscn" id="1_3k4xk"]
+[ext_resource type="Script" path="res://Character Creation/creation/CreationCameraController.gd" id="2_hptar"]
+[ext_resource type="Script" path="res://Character Creation/creation/CharacterOptionsGenerator.gd" id="2_xpwym"]
+[ext_resource type="Script" path="res://Character Creation/creation/CharacterOptionsApplyer.gd" id="3_rchqw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_udbo3"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_7ibco"]
+sky_material = SubResource("ProceduralSkyMaterial_udbo3")
+
+[sub_resource type="Environment" id="Environment_x23dk"]
+background_mode = 2
+sky = SubResource("Sky_7ibco")
+ssao_enabled = true
+glow_enabled = true
+fog_light_color = Color(0.45098, 0.486275, 0.537255, 1)
+fog_sun_scatter = 0.5
+fog_density = 0.1204
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvvhx"]
+albedo_color = Color(0.337255, 0.337255, 0.337255, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bc5oi"]
+albedo_color = Color(0.611765, 0.611765, 0.611765, 1)
+roughness = 0.52
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1tkf"]
+
+[sub_resource type="GDScript" id="GDScript_yl4qo"]
+resource_name = "CameraHeightSetter"
+script/source = "extends Node
+
+@export var character_node_path:NodePath
+@onready var character_node:Node3D
+var characterBody:CharacterBody
+
+@export var camera_node:NodePath
+var camera
+
+@export var tabContainer_node:NodePath
+var tabContainer:TabContainer
+
+func _ready():
+	if character_node_path:
+		character_node = get_node(character_node_path)
+		characterBody = character_node.get_node(\"character\")
+	
+	if camera_node:
+		camera = get_node(camera_node)
+	
+	if tabContainer_node:
+		tabContainer = get_node(tabContainer_node)
+		
+		tabContainer.tab_changed.connect(_on_tab_changed)
+
+
+func _on_tab_changed(tab_idx:int):
+	var title = tabContainer.get_tab_title(tab_idx)
+	var height = 1.5
+	
+	if title == \"Body\":
+		height = characterBody.get_bone_position(\"spine02\").y
+		camera.zoom_target = 1.5
+	elif title == \"Head\" or title == \"Face\":
+		height = characterBody.get_bone_position(\"oris06\").y
+		camera.zoom_target = 0.7
+	
+	camera.height_target = height
+	
+"
+
+[node name="CharacterCreation" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x23dk")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.841523, -0.0661585, 0.536155, -0.349092, 0.690826, 0.633162, -0.412279, -0.719988, 0.558251, 0, 6.65641, 0)
+shadow_enabled = true
+
+[node name="Room" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0811605, 0)
+
+[node name="floor" type="CSGBox3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.865256, 0)
+size = Vector3(50, 1, 50)
+material = SubResource("StandardMaterial3D_xvvhx")
+
+[node name="Platform" type="Node3D" parent="Room"]
+transform = Transform3D(1.842, 0, 0, 0, 1.842, 0, 0, 0, 1.842, 0, -0.102683, 0)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Room/Platform"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.446198)
+polygon = PackedVector2Array(-0.000259027, 1.2219, 0.798302, 0.766905, 0.793659, 0.0844148, 0.00438394, -0.365936, -0.738463, 0.0844148, -0.73382, 0.813333)
+material = SubResource("StandardMaterial3D_bc5oi")
+metadata/_edit_group_ = true
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="Room/Platform"]
+transform = Transform3D(0.8891, 0, 0, 0, -3.88638e-08, 0.8891, 0, -0.8891, -3.88638e-08, 0, 0.054625, 0.382511)
+polygon = PackedVector2Array(-0.000259027, 1.2219, 0.798302, 0.766905, 0.793659, 0.0844148, 0.00438394, -0.365936, -0.738463, 0.0844148, -0.73382, 0.813333)
+material = SubResource("StandardMaterial3D_bc5oi")
+metadata/_edit_group_ = true
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="Room/Platform"]
+transform = Transform3D(0.716046, 0, 0, 0, -3.12994e-08, 0.716046, 0, -0.716046, -3.12994e-08, 0, 0.104004, 0.329858)
+polygon = PackedVector2Array(-0.000259027, 1.2219, 0.798302, 0.766905, 0.793659, 0.0844148, 0.00438394, -0.365936, -0.738463, 0.0844148, -0.73382, 0.813333)
+material = SubResource("StandardMaterial3D_bc5oi")
+metadata/_edit_group_ = true
+
+[node name="Character" parent="." instance=ExtResource("1_3k4xk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CreationCameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830599, 1.77827)
+script = ExtResource("2_hptar")
+rotation_target_node_path = NodePath("../Character")
+
+[node name="Camera3D" type="Camera3D" parent="CreationCameraController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+current = true
+fov = 50.0
+near = 0.001
+far = 171.44
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="CreationPanel" type="PanelContainer" parent="GUI"]
+custom_minimum_size = Vector2(0, 500)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -132.0
+offset_right = -24.0
+offset_bottom = 132.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_i1tkf")
+
+[node name="CharacterOptionsApplyer" type="Control" parent="GUI/CreationPanel"]
+layout_mode = 2
+script = ExtResource("3_rchqw")
+character_node_path = NodePath("../../../Character")
+
+[node name="CameraHeightSetter" type="Node" parent="GUI/CreationPanel"]
+script = SubResource("GDScript_yl4qo")
+character_node_path = NodePath("../../../Character")
+camera_node = NodePath("../../../CreationCameraController")
+tabContainer_node = NodePath("../CharacterOptionsGenerator")
+
+[node name="CharacterOptionsGenerator" type="TabContainer" parent="GUI/CreationPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+tab_alignment = 1
+script = ExtResource("2_xpwym")
+character_node_path = NodePath("../../../Character")
+
+[node name="Body" type="VBoxContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator/Body/ScrollContainer"]
+layout_mode = 2
+
+[node name="SkinColor" type="VBoxContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator/Body/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/CreationPanel/CharacterOptionsGenerator/Body/ScrollContainer/VBoxContainer/SkinColor"]
+layout_mode = 2
+text = "Skin Color"
+
+[node name="SkinColorPicker" type="ColorPicker" parent="GUI/CreationPanel/CharacterOptionsGenerator/Body/ScrollContainer/VBoxContainer/SkinColor"]
+layout_mode = 2
+edit_alpha = false
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="Head" type="VBoxContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator"]
+visible = false
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator/Head"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator/Head/ScrollContainer"]
+layout_mode = 2
+
+[node name="EyeColor" type="VBoxContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator/Head/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/CreationPanel/CharacterOptionsGenerator/Head/ScrollContainer/VBoxContainer/EyeColor"]
+layout_mode = 2
+text = "Eye Color"
+
+[node name="EyeColorPicker" type="ColorPicker" parent="GUI/CreationPanel/CharacterOptionsGenerator/Head/ScrollContainer/VBoxContainer/EyeColor"]
+layout_mode = 2
+color = Color(0.215686, 0.462745, 0.690196, 1)
+edit_alpha = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="HairColor" type="VBoxContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator/Head/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/CreationPanel/CharacterOptionsGenerator/Head/ScrollContainer/VBoxContainer/HairColor"]
+layout_mode = 2
+text = "Hair Color"
+
+[node name="HairColorPicker" type="ColorPicker" parent="GUI/CreationPanel/CharacterOptionsGenerator/Head/ScrollContainer/VBoxContainer/HairColor"]
+layout_mode = 2
+color = Color(0.215686, 0.462745, 0.690196, 1)
+edit_alpha = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="Face" type="VBoxContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator"]
+visible = false
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator/Face"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/CreationPanel/CharacterOptionsGenerator/Face/ScrollContainer"]
+layout_mode = 2
+
+[connection signal="color_changed" from="GUI/CreationPanel/CharacterOptionsGenerator/Body/ScrollContainer/VBoxContainer/SkinColor/SkinColorPicker" to="GUI/CreationPanel/CharacterOptionsApplyer" method="_on_skin_color_picker_color_changed"]
+[connection signal="color_changed" from="GUI/CreationPanel/CharacterOptionsGenerator/Head/ScrollContainer/VBoxContainer/EyeColor/EyeColorPicker" to="GUI/CreationPanel/CharacterOptionsApplyer" method="_on_eye_color_picker_color_changed"]
+[connection signal="color_changed" from="GUI/CreationPanel/CharacterOptionsGenerator/Head/ScrollContainer/VBoxContainer/HairColor/HairColorPicker" to="GUI/CreationPanel/CharacterOptionsApplyer" method="_on_hair_color_picker_color_changed"]

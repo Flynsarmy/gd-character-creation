@@ -1,0 +1,162 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn8t58vhub373"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bxw6n"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ivb6h"]
+sky_material = SubResource("ProceduralSkyMaterial_bxw6n")
+
+[sub_resource type="Environment" id="Environment_3b14l"]
+background_mode = 2
+sky = SubResource("Sky_ivb6h")
+ssao_enabled = true
+glow_enabled = true
+
+[sub_resource type="Animation" id="Animation_7j3j7"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.0507256, -0.25, 0, 0.349282, -2.98033, 0, -0.350718, -2.41533, 0.349282, 2.61899, -0.0507256, -0.250718, 2.05399, 0.249282, -2.59894),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_y10wo"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b7aoi"]
+_data = {
+"RESET": SubResource("Animation_y10wo"),
+"new_animation": SubResource("Animation_7j3j7")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uc17n"]
+radius = 0.128883
+height = 0.909772
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3b14l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.77384, 0.38206, -0.505174, 0, 0.797584, 0.603208, 0.633381, -0.466787, 0.617203, 0, 0, 0)
+shadow_enabled = true
+
+[node name="head" type="StaticBody3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head"]
+root_node = NodePath("../CSGSphere3D")
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_b7aoi")
+}
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="head"]
+
+[node name="joint_1" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.493514)
+node_a = NodePath("../head")
+node_b = NodePath("../hair_A")
+params/bias = 0.9
+
+[node name="hair_A" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -2.03451e-08, -0.969207)
+mass = 0.1
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="hair_A"]
+radius = 0.144189
+height = 1.01991
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hair_A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0155649, -3.55271e-15)
+shape = SubResource("CapsuleShape3D_uc17n")
+
+[node name="joint_2" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.46097)
+node_a = NodePath("../hair_A")
+node_b = NodePath("../hair_B")
+params/bias = 0.52
+
+[node name="hair_B" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -2.03451e-08, -1.92787)
+mass = 0.1
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="hair_B"]
+radius = 0.144189
+height = 1.01991
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hair_B"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0155649, -3.55271e-15)
+shape = SubResource("CapsuleShape3D_uc17n")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.258819, 0.965926, 0, 0.965926, 0.258819, -1, 1.13133e-08, -4.2222e-08, 3, 0.699538, -1.31134e-07)
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6, 0)
+use_collision = true
+size = Vector3(11.7349, 1, 12.0588)

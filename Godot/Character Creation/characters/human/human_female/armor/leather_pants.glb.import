@@ -1,0 +1,32 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://b18186qbq358u"
+path="res://.godot/imported/leather_pants.glb-55bc729b54da904d14b95d96e3075786.scn"
+
+[deps]
+
+source_file="res://Character Creation/characters/human/human_female/armor/leather_pants.glb"
+dest_files=["res://.godot/imported/leather_pants.glb-55bc729b54da904d14b95d96e3075786.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={}
+gltf/embedded_image_handling=1
